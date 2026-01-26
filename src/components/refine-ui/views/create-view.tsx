@@ -1,16 +1,16 @@
 "use client";
 
+import { Breadcrumb } from "@/components/refine-ui/layout/breadcrumb";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import {
   useBack,
   useResourceParams,
   useUserFriendlyName,
 } from "@refinedev/core";
-import type { PropsWithChildren } from "react";
-import { Breadcrumb } from "@/components/refine-ui/layout/breadcrumb";
-import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
 import { ArrowLeftIcon } from "lucide-react";
+import type { PropsWithChildren } from "react";
 
 type CreateViewProps = PropsWithChildren<{
   className?: string;
@@ -47,7 +47,7 @@ export const CreateViewHeader = ({
     titleFromProps ??
     getUserFriendlyName(
       resource?.meta?.label ?? identifier ?? resource?.name,
-      "plural",
+      "plural"
     );
 
   return (
@@ -64,7 +64,7 @@ export const CreateViewHeader = ({
           "gap-1",
           "items-center",
           "-ml-2.5",
-          headerClassName,
+          headerClassName
         )}
       >
         <Button variant="ghost" size="icon" onClick={back}>

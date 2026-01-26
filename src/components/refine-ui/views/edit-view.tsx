@@ -1,17 +1,17 @@
 "use client";
 
+import { RefreshButton } from "@/components/refine-ui/buttons/refresh";
+import { Breadcrumb } from "@/components/refine-ui/layout/breadcrumb";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import {
   useBack,
   useResourceParams,
   useUserFriendlyName,
 } from "@refinedev/core";
-import type { PropsWithChildren } from "react";
-import { Breadcrumb } from "@/components/refine-ui/layout/breadcrumb";
-import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import { RefreshButton } from "@/components/refine-ui/buttons/refresh";
 import { ArrowLeftIcon } from "lucide-react";
+import type { PropsWithChildren } from "react";
 
 type EditViewProps = PropsWithChildren<{
   className?: string;
@@ -53,7 +53,7 @@ export const EditViewHeader = ({
     titleFromProps ??
     getUserFriendlyName(
       resource?.meta?.label ?? identifier ?? resource?.name,
-      "plural",
+      "plural"
     );
 
   return (
@@ -71,7 +71,7 @@ export const EditViewHeader = ({
           "items-center",
           "justify-between",
           "-ml-2.5",
-          headerClassName,
+          headerClassName
         )}
       >
         <div className="flex items-center gap-1">

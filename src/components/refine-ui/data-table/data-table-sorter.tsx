@@ -1,9 +1,9 @@
 "use client";
 
-import type { Column } from "@tanstack/react-table";
-import { ArrowDown, ArrowUp, ChevronsUpDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import type { Column } from "@tanstack/react-table";
+import { ArrowDown, ArrowUp, ChevronsUpDown } from "lucide-react";
 
 export type DataTableSorterProps<TData> = {
   column: Column<TData>;
@@ -18,8 +18,8 @@ export function DataTableSorter<TData>({
     column.getIsSorted() === "desc"
       ? `Sort by ${column.id} as descending`
       : column.getIsSorted() === "asc"
-        ? `Sort by ${column.id} as ascending`
-        : `Sort by ${column.id}`;
+      ? `Sort by ${column.id} as ascending`
+      : `Sort by ${column.id}`;
 
   return (
     <Button

@@ -1,20 +1,11 @@
 "use client";
 
-import React from "react";
+import { Button } from "@/components/ui/button";
 import {
-  useMenu,
-  useLink,
-  useRefineOptions,
-  type TreeMenuItem,
-} from "@refinedev/core";
-import {
-  SidebarRail as ShadcnSidebarRail,
-  Sidebar as ShadcnSidebar,
-  SidebarContent as ShadcnSidebarContent,
-  SidebarHeader as ShadcnSidebarHeader,
-  useSidebar as useShadcnSidebar,
-  SidebarTrigger as ShadcnSidebarTrigger,
-} from "@/components/ui/sidebar";
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,13 +13,22 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { Button } from "@/components/ui/button";
-import { ChevronRight, ListIcon } from "lucide-react";
+  Sidebar as ShadcnSidebar,
+  SidebarContent as ShadcnSidebarContent,
+  SidebarHeader as ShadcnSidebarHeader,
+  SidebarRail as ShadcnSidebarRail,
+  SidebarTrigger as ShadcnSidebarTrigger,
+  useSidebar as useShadcnSidebar,
+} from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
+import {
+  useLink,
+  useMenu,
+  useRefineOptions,
+  type TreeMenuItem,
+} from "@refinedev/core";
+import { ChevronRight, ListIcon } from "lucide-react";
+import React from "react";
 
 export function Sidebar() {
   const { open } = useShadcnSidebar();
@@ -52,7 +52,7 @@ export function Sidebar() {
           {
             "px-3": open,
             "px-1": !open,
-          },
+          }
         )}
       >
         {menuItems.map((item: TreeMenuItem) => (
@@ -112,7 +112,7 @@ function SidebarItemGroup({ item, selectedKey }: MenuItemProps) {
             "opacity-100": open,
             "pointer-events-none": !open,
             "pointer-events-auto": open,
-          },
+          }
         )}
       >
         {getDisplayName(item)}
@@ -144,7 +144,7 @@ function SidebarItemCollapsible({ item, selectedKey }: MenuItemProps) {
         "text-muted-foreground",
         "transition-transform",
         "duration-200",
-        "group-data-[state=open]:rotate-90",
+        "group-data-[state=open]:rotate-90"
       )}
     />
   );
@@ -223,7 +223,7 @@ function SidebarHeader() {
         "flex-row",
         "items-center",
         "justify-between",
-        "overflow-hidden",
+        "overflow-hidden"
       )}
     >
       <div
@@ -240,7 +240,7 @@ function SidebarHeader() {
           {
             "pl-3": !open,
             "pl-5": open,
-          },
+          }
         )}
       >
         <div>{title.icon}</div>
@@ -253,7 +253,7 @@ function SidebarHeader() {
             {
               "opacity-0": !open,
               "opacity-100": open,
-            },
+            }
           )}
         >
           {title.text}
@@ -347,7 +347,7 @@ function SidebarButton({
           "text-sidebar-primary-foreground": isSelected,
           "hover:text-sidebar-primary-foreground": isSelected,
         },
-        className,
+        className
       )}
       onClick={onClick}
       {...props}

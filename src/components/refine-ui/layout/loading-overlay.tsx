@@ -1,8 +1,8 @@
 "use client";
 
-import * as React from "react";
-import { Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Loader2 } from "lucide-react";
+import * as React from "react";
 
 interface LoadingOverlayProps extends React.HTMLAttributes<HTMLDivElement> {
   loading?: boolean;
@@ -22,7 +22,7 @@ export const LoadingOverlay = React.forwardRef<
         className={cn(
           "absolute inset-0 z-50 flex items-center justify-center",
           "bg-background/60",
-          className,
+          className
         )}
       >
         <div className="flex flex-col items-center gap-2">

@@ -1,19 +1,14 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
 import { useTranslate, type CrudOperators } from "@refinedev/core";
 import type { Column, Table as ReactTable } from "@tanstack/react-table";
-import type { DateRange } from "react-day-picker";
 import { Check, ChevronsUpDown, ListFilter, X } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import type { DateRange } from "react-day-picker";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Command,
   CommandEmpty,
@@ -22,8 +17,13 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
-import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 
 export type DataTableFilterDropdownProps<TData> = {
@@ -60,7 +60,7 @@ export function DataTableFilterDropdown<TData>({
               "text-primary": isFiltered,
               "text-muted-foreground": !isFiltered,
             },
-            triggerClassName,
+            triggerClassName
           )}
         >
           <ListFilter className={cn("!h-3", "!w-3")} />
@@ -101,7 +101,7 @@ export function DataTableFilterDropdownActions({
         "justify-between",
         "w-full",
         "gap-2",
-        className,
+        className
       )}
     >
       <Button
@@ -112,7 +112,7 @@ export function DataTableFilterDropdownActions({
           "rounded-sm",
           "text-xs",
           "font-semibold",
-          "text-muted-foreground",
+          "text-muted-foreground"
         )}
         onClick={() => {
           onClear();
@@ -268,11 +268,11 @@ export function DataTableFilterCombobox<TData>({
           ? Array.isArray(value)
             ? value
             : value && typeof value === "string"
-              ? [value]
-              : []
-          : value && typeof value === "string"
             ? [value]
-            : [];
+            : []
+          : value && typeof value === "string"
+          ? [value]
+          : [];
 
         const handleSelect = (optionValue: string) => {
           if (multiple) {
@@ -305,7 +305,7 @@ export function DataTableFilterCombobox<TData>({
           }
 
           const selectedOption = options.find(
-            (option) => option.value === currentValues[0],
+            (option) => option.value === currentValues[0]
           );
           return selectedOption ? selectedOption.label : currentValues[0];
         };
@@ -330,7 +330,7 @@ export function DataTableFilterCombobox<TData>({
                   "max-w-80",
                   "justify-start",
                   "h-auto",
-                  "min-h-9",
+                  "min-h-9"
                 )}
               >
                 <div className={cn("flex", "gap-2", "w-full")}>
@@ -348,7 +348,7 @@ export function DataTableFilterCombobox<TData>({
                               "gap-0",
                               "h-4",
                               "pr-0.5",
-                              "rounded-sm",
+                              "rounded-sm"
                             )}
                           >
                             <span className={cn("text-[10px]", "leading-4")}>
@@ -366,7 +366,7 @@ export function DataTableFilterCombobox<TData>({
                                 "hover:text-destructive",
                                 "rounded-sm",
                                 "cursor-pointer",
-                                "transition-colors",
+                                "transition-colors"
                               )}
                               onClick={(e) => {
                                 e.preventDefault();
@@ -383,7 +383,7 @@ export function DataTableFilterCombobox<TData>({
                           className={cn(
                             "text-xs",
                             "text-muted-foreground",
-                            "px-1",
+                            "px-1"
                           )}
                         >
                           +{currentValues.length - 3} more
@@ -397,7 +397,7 @@ export function DataTableFilterCombobox<TData>({
                         "flex-1",
                         "text-start",
                         "text-xs",
-                        currentValues.length === 0 && "text-muted-foreground",
+                        currentValues.length === 0 && "text-muted-foreground"
                       )}
                     >
                       {getDisplayText()}
@@ -420,7 +420,7 @@ export function DataTableFilterCombobox<TData>({
                     {noResultsText ??
                       t(
                         "table.filter.combobox.noResults",
-                        "Results not found.",
+                        "Results not found."
                       )}
                   </CommandEmpty>
                   <CommandGroup>
@@ -439,7 +439,7 @@ export function DataTableFilterCombobox<TData>({
                             "w-4",
                             currentValues.includes(option.value)
                               ? "opacity-100"
-                              : "opacity-0",
+                              : "opacity-0"
                           )}
                         />
                       </CommandItem>
@@ -478,7 +478,7 @@ export function DataTableFilterDropdownDateSinglePicker<TData>({
   };
 
   const [filterValue, setFilterValue] = useState<Date | undefined>(() =>
-    parseDate(columnFilterValue),
+    parseDate(columnFilterValue)
   );
 
   useEffect(() => {
@@ -564,7 +564,7 @@ export function DataTableFilterDropdownDateRangePicker<TData>({
   const columnFilterValue = column.getFilterValue() as string[];
 
   const parseDateRange = (
-    value: string[] | undefined,
+    value: string[] | undefined
   ): DateRange | undefined => {
     if (!value || !Array.isArray(value) || value.length !== 2) return undefined;
 
@@ -582,7 +582,7 @@ export function DataTableFilterDropdownDateRangePicker<TData>({
   };
 
   const [filterValue, setFilterValue] = useState<DateRange | undefined>(() =>
-    parseDateRange(columnFilterValue),
+    parseDateRange(columnFilterValue)
   );
 
   useEffect(() => {
@@ -681,7 +681,7 @@ export function DataTableFilterInput<TData>({
   renderInput,
 }: DataTableFilterInputProps<TData>) {
   const [filterValue, setFilterValue] = useState(
-    (columnFromProps.getFilterValue() as string | string[]) || "",
+    (columnFromProps.getFilterValue() as string | string[]) || ""
   );
 
   const [operator, setOperator] = useState<CrudOperators>(() => {
@@ -729,7 +729,7 @@ export function DataTableFilterInput<TData>({
               "flex-col",
               "items-center",
               "gap-4",
-              "w-full",
+              "w-full"
             )}
             onKeyDown={(event) => {
               if (event.key === "Enter") {
@@ -866,14 +866,6 @@ const CRUD_OPERATOR_LABELS: Record<
     i18nKey: "table.filter.operator.nendswiths",
     defaultLabel: "Not ends with (case sensitive)",
   },
-  eqs: {
-    i18nKey: "table.filter.operator.eqs",
-    defaultLabel: "Equals (case sensitive)",
-  },
-  nes: {
-    i18nKey: "table.filter.operator.nes",
-    defaultLabel: "Not equals (case sensitive)",
-  },
 };
 
 export type DataTableFilterOperatorSelectProps = {
@@ -899,20 +891,20 @@ export function DataTableFilterOperatorSelect({
 
   const operators = useMemo(() => {
     return Object.entries(CRUD_OPERATOR_LABELS).filter(([operator]) =>
-      operatorsFromProps?.includes(operator as CrudOperators),
+      operatorsFromProps?.includes(operator as CrudOperators)
     );
   }, [operatorsFromProps]);
 
   const selectedLabel = t(
     CRUD_OPERATOR_LABELS[value as Exclude<CrudOperators, "or" | "and">].i18nKey,
     CRUD_OPERATOR_LABELS[value as Exclude<CrudOperators, "or" | "and">]
-      .defaultLabel,
+      .defaultLabel
   );
   const placeholderText =
     placeholder ?? t("table.filter.operator.placeholder", "Search operator...");
   const noResultsText = t(
     "table.filter.operator.noResults",
-    "No operator found.",
+    "No operator found."
   );
 
   return (
@@ -926,7 +918,7 @@ export function DataTableFilterOperatorSelect({
             "w-full",
             "justify-between",
             "truncate",
-            triggerClassName,
+            triggerClassName
           )}
         >
           <div className={cn("truncate")}>
@@ -957,7 +949,7 @@ export function DataTableFilterOperatorSelect({
                       "mr-2",
                       "h-4",
                       "w-4",
-                      value === op ? "opacity-100" : "opacity-0",
+                      value === op ? "opacity-100" : "opacity-0"
                     )}
                   />
                   {t(i18nKey, defaultLabel)}

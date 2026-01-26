@@ -2,11 +2,11 @@
 
 import type { PropsWithChildren } from "react";
 
-import { useResourceParams, useUserFriendlyName } from "@refinedev/core";
+import { CreateButton } from "@/components/refine-ui/buttons/create";
 import { Breadcrumb } from "@/components/refine-ui/layout/breadcrumb";
 import { Separator } from "@/components/ui/separator";
-import { CreateButton } from "@/components/refine-ui/buttons/create";
 import { cn } from "@/lib/utils";
+import { useResourceParams, useUserFriendlyName } from "@refinedev/core";
 
 type ListViewProps = PropsWithChildren<{
   className?: string;
@@ -46,7 +46,7 @@ export const ListViewHeader = ({
     titleFromProps ??
     getUserFriendlyName(
       resource?.meta?.label ?? identifier ?? resource?.name,
-      "plural",
+      "plural"
     );
 
   return (

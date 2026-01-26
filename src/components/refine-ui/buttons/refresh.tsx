@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
-import { type BaseKey, useRefreshButton } from "@refinedev/core";
-import { RefreshCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { type BaseKey, useRefreshButton } from "@refinedev/core";
+import { RefreshCcw } from "lucide-react";
+import React from "react";
 
 type RefreshButtonProps = {
   /**
@@ -34,7 +34,7 @@ export const RefreshButton = React.forwardRef<
 >(
   (
     { resource, recordItemId, dataProviderName, meta, children, ...rest },
-    ref,
+    ref
   ) => {
     const {
       onClick: refresh,
@@ -74,7 +74,7 @@ export const RefreshButton = React.forwardRef<
         )}
       </Button>
     );
-  },
+  }
 );
 
 RefreshButton.displayName = "RefreshButton";

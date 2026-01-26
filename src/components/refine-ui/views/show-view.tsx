@@ -2,17 +2,17 @@
 
 import type { PropsWithChildren } from "react";
 
-import { ArrowLeftIcon } from "lucide-react";
+import { RefreshButton } from "@/components/refine-ui/buttons/refresh";
+import { Breadcrumb } from "@/components/refine-ui/layout/breadcrumb";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 import {
   useBack,
   useResourceParams,
   useUserFriendlyName,
 } from "@refinedev/core";
-import { Breadcrumb } from "@/components/refine-ui/layout/breadcrumb";
-import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import { RefreshButton } from "@/components/refine-ui/buttons/refresh";
-import { cn } from "@/lib/utils";
+import { ArrowLeftIcon } from "lucide-react";
 import { EditButton } from "../buttons/edit";
 
 type ShowViewProps = PropsWithChildren<{
@@ -53,7 +53,7 @@ export const ShowViewHeader = ({
     titleFromProps ??
     getUserFriendlyName(
       resource?.meta?.label ?? identifier ?? resource?.name,
-      "singular",
+      "singular"
     );
 
   return (
@@ -71,7 +71,7 @@ export const ShowViewHeader = ({
           "items-center",
           "justify-between",
           "-ml-2.5",
-          headerClassName,
+          headerClassName
         )}
       >
         <div className="flex items-center gap-1">
